@@ -37,9 +37,9 @@ public class NioTest11 {
                 long read = socketChannel.read(buffers);
                 bytesRead += read;
 
-                System.out.println(bytesRead);
+                System.out.println("bytesRead:" + bytesRead);
                 Arrays.asList(buffers).stream().map(buffer -> "position:" + buffer.position() +
-                        ",limit:" + buffer.limit());
+                        ",limit:" + buffer.limit()).forEach(System.out::println);
             }
 
             Arrays.asList(buffers).forEach(buffer -> {
