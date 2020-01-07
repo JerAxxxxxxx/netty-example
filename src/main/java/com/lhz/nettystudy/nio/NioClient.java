@@ -72,22 +72,23 @@ public class NioClient {
                                 e.printStackTrace();
                             }
 
-                            try {
-                                client.register(selector, SelectionKey.OP_READ);
-                            } catch (ClosedChannelException e) {
-                                e.printStackTrace();
-                            }
+                        }
+                        try {
+                            client.register(selector, SelectionKey.OP_READ);
+                        } catch (ClosedChannelException e) {
+                            e.printStackTrace();
                         }
 
 
                     } else if (selectionKey.isReadable()) {
                         SocketChannel client = (SocketChannel) selectionKey.channel();
-                        ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+                        ByteBuffer readBuffer = ByteBuffer.allocate(1024);
 
                         try {
-                            int count = client.read(byteBuffer);
+                            int count = client.read(readBuffer);
                             if (count > 0) {
-
+                                String receiveMessage = new String(readBuffer.array(), 0, count);
+                                System.out.println(receiveMessage);
                             }
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -96,7 +97,7 @@ public class NioClient {
 
                     }
                 });
-
+                selectionKeys.clear();
             }
         } catch (Exception e) {
             e.printStackTrace();
