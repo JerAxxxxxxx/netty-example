@@ -7,6 +7,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioSocketChannel;
 
 /**
+ * 客户端初始化的代码模板
+ *
  * @author JerAxxxxxxx
  * @version Revision 1.0.0
  * @date 2019/12/10 15:51

@@ -24,12 +24,9 @@ public class NioClient {
         try {
             SocketChannel socketChannel = SocketChannel.open();
             socketChannel.configureBlocking(false);
-
             Selector selector = Selector.open();
             socketChannel.register(selector, SelectionKey.OP_CONNECT);
-
             socketChannel.connect(new InetSocketAddress(8899));
-
             while (true) {
                 selector.select();
                 Set<SelectionKey> selectionKeys = selector.selectedKeys();
@@ -78,8 +75,6 @@ public class NioClient {
                         } catch (ClosedChannelException e) {
                             e.printStackTrace();
                         }
-
-
                     } else if (selectionKey.isReadable()) {
                         SocketChannel client = (SocketChannel) selectionKey.channel();
                         ByteBuffer readBuffer = ByteBuffer.allocate(1024);
