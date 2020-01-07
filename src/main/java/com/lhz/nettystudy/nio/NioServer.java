@@ -61,8 +61,8 @@ public class NioServer {
                             if (count > 0) {
                                 readBuffer.flip();
                                 Charset charset = Charset.forName("utf-8");
-                                String receivMessage = String.valueOf(charset.decode(readBuffer).array());
-                                System.out.println(client + "   :   " + receivMessage);
+                                String receiveMessage = String.valueOf(charset.decode(readBuffer).array());
+                                System.out.println(client + "   :   " + receiveMessage);
 
                                 String sendKey = null;
 
@@ -77,7 +77,7 @@ public class NioServer {
                                     SocketChannel value = entry.getValue();
 
                                     ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-                                    byteBuffer.put((sendKey + " : " + receivMessage).getBytes());
+                                    byteBuffer.put((sendKey + " : " + receiveMessage).getBytes());
                                     byteBuffer.flip();
 
                                     value.write(byteBuffer);
