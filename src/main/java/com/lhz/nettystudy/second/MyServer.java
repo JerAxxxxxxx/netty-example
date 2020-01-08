@@ -14,7 +14,9 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 @SuppressWarnings("all")
 public class MyServer {
     public static void main(String[] args) throws InterruptedException {
+        //完成转发  默认线程数处理器的2倍   一般开发中设置成1
         EventLoopGroup bossGroup = new NioEventLoopGroup();
+        //真正完成处理的请求
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {
             ServerBootstrap serverBootstrap = new ServerBootstrap();
