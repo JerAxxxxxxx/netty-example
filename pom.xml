@@ -20,7 +20,7 @@
         <!--4.1.15.Final 是讲解时使用的版本-->
         <netty.version>4.1.43.Final</netty.version>
         <protobuf.version>3.11.0</protobuf.version>
-        <thrift.version>0.13.0</thrift.version>
+        <thrift.version>0.14.0</thrift.version>
     </properties>
 
     <dependencies>
